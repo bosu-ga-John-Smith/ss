@@ -1,0 +1,223 @@
+/* /home/ubuntu/ai_content_detector/src/static/style.css */
+
+@import url(\'https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Orbitron:wght@700&display=swap\');
+
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #6c757d;
+    --background-color: #f8f9fa;
+    --text-color: #333;
+    --header-font: \'Orbitron\', sans-serif;
+    --body-font: \'Roboto\', sans-serif;
+    --container-bg: #ffffff;
+    --border-radius: 8px;
+    --box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    --accent-color: #ff4081; /* Flashy accent */
+    --success-color: #28a745;
+    --error-color: #dc3545;
+}
+
+body {
+    font-family: var(--body-font);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 20px;
+    line-height: 1.6;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+}
+
+.container {
+    background-color: var(--container-bg);
+    padding: 30px 40px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    max-width: 800px;
+    width: 100%;
+    margin: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 20px;
+}
+
+header h1 {
+    font-family: var(--header-font);
+    color: var(--primary-color);
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+header p {
+    color: var(--secondary-color);
+    font-size: 1.1em;
+}
+
+.input-section {
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column; /* Stack forms vertically on small screens */
+    gap: 20px;
+}
+
+@media (min-width: 768px) {
+    .input-section {
+        flex-direction: row; /* Place forms side-by-side on larger screens */
+    }
+    .input-area {
+        flex: 1; /* Make forms take equal width */
+    }
+}
+
+.input-area {
+    background-color: #f1f3f5;
+    padding: 20px;
+    border-radius: var(--border-radius);
+    border: 1px solid #dee2e6;
+}
+
+.input-area h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: var(--primary-color);
+    font-family: var(--header-font);
+    font-size: 1.4em;
+}
+
+input[type=\"file\"] {
+    display: block;
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: calc(100% - 22px); /* Account for padding and border */
+    background-color: #fff;
+}
+
+#ocr-options label {
+    display: inline-block;
+    margin-right: 15px;
+    margin-bottom: 5px;
+    font-weight: normal;
+    color: var(--secondary-color);
+}
+
+#ocr-options input[type=\"radio\"] {
+    margin-right: 5px;
+}
+
+textarea {
+    width: calc(100% - 22px); /* Account for padding and border */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: var(--body-font);
+    font-size: 1em;
+    resize: vertical;
+    min-height: 150px;
+}
+
+button[type=\"submit\"] {
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    display: block;
+    width: 100%;
+    margin-top: 15px;
+}
+
+button[type=\"submit\"]:hover {
+    background-color: #d81b60; /* Darker accent */
+}
+
+button[type=\"submit\"]:active {
+    transform: scale(0.98);
+}
+
+.results-section {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #e9ecef;
+    border-radius: var(--border-radius);
+    border: 1px solid #ced4da;
+}
+
+.results-section h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+    font-family: var(--header-font);
+    font-size: 1.6em;
+    text-align: center;
+}
+
+#loading-indicator {
+    text-align: center;
+    padding: 20px;
+    font-size: 1.2em;
+    color: var(--secondary-color);
+    font-style: italic;
+}
+
+.error-message {
+    background-color: #f8d7da;
+    color: var(--error-color);
+    border: 1px solid #f5c6cb;
+    padding: 15px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#analysis-output p {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+}
+
+#analysis-output strong {
+    color: var(--primary-color);
+}
+
+#prediction {
+    font-weight: bold;
+}
+
+#prediction.ai {
+    color: var(--accent-color);
+}
+
+#prediction.human {
+    color: var(--success-color);
+}
+
+#probability-graph, #highlighted-text {
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    padding: 15px;
+    margin-top: 20px;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+}
+
+/* Add specific styles for highlighting later */
+.ai-highlight {
+    background-color: rgba(255, 64, 129, 0.2); /* Light accent background */
+    border-bottom: 2px solid var(--accent-color);
+    padding: 0.1em 0;
+}
+
+

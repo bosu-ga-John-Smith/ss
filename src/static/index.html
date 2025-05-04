@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Content Detector</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Add Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>AI Content Detector</h1>
+            <p>Upload a file (TXT, PDF, DOCX, PNG, JPG/JPEG) or paste text to analyze if it was written by a human or AI.</p>
+        </header>
+
+        <section class="input-section">
+            <h2>Analyze Content</h2>
+
+            <!-- File Upload Form -->
+            <form id="upload-form" class="input-area">
+                <h3>Upload File</h3>
+                <input type="file" id="file-input" name="file" accept=".txt,.pdf,.docx,.png,.jpg,.jpeg" required>
+                <div id="ocr-options" style="display: none; margin-top: 10px;">
+                    <label>Select OCR Model (for images):</label><br>
+                    <input type="radio" id="ocr-printed" name="ocr_model_type" value="printed" checked>
+                    <label for="ocr-printed">Printed Text</label><br>
+                    <input type="radio" id="ocr-handwritten" name="ocr_model_type" value="handwritten">
+                    <label for="ocr-handwritten">Handwritten Text</label>
+                </div>
+                <button type="submit">Analyze File</button>
+            </form>
+
+            <!-- Text Input Form -->
+            <form id="text-form" class="input-area">
+                <h3>Paste Text</h3>
+                <textarea id="text-input" name="text" rows="10" placeholder="Paste your text here..." required></textarea>
+                <button type="submit">Analyze Text</button>
+            </form>
+        </section>
+
+        <section id="results-section" class="results-section" style="display: none;">
+            <h2>Analysis Results</h2>
+            <div id="loading-indicator" style="display: none;">Analyzing... Please wait. This might take a moment, especially for large files or images.</div>
+            <div id="error-message" class="error-message" style="display: none;"></div>
+            <div id="analysis-output">
+                <p><strong>Prediction:</strong> <span id="prediction"></span></p>
+                <p><strong>AI Probability:</strong> <span id="ai-prob"></span>%</p>
+                <p><strong>Human Probability:</strong> <span id="human-prob"></span>%</p>
+                <!-- Canvas for Chart.js graph -->
+                <div class="chart-container" style="position: relative; height:250px; width:100%; margin-top: 20px;">
+                    <canvas id="probability-graph"></canvas>
+                </div>
+                <!-- Placeholder for highlighted text -->
+                <div id="highlighted-text" style="margin-top: 20px; border: 1px dashed #ccc; padding: 10px; max-height: 300px; overflow-y: auto; background-color: #fff; box-shadow: inset 0 1px 3px rgba(0,0,0,0.05); border-radius: 4px;">
+                    Highlighting specific AI parts is currently limited by the model. More details soon.
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
